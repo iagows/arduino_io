@@ -62,25 +62,32 @@ int IO::get()
 void IO::toString(Stream &serial)
 {
   serial.print(name);
-  serial.print("#");
+  serial.print(cc);
   if (io == IN) {
-    serial.print("i");
+    serial.print(i);
 
   } else {
-    serial.print("o");
+    serial.print(o);
   }
 
-  serial.print("#");
+  serial.print(cc);
 
   switch (type) {
     case BOOL:
-      serial.print("bool");
+      serial.print(boolean);
       break;
     case PERCENT:
-      serial.print("percent");
+      serial.print(percent);
       break;
     case INT:
-      serial.print("int");
+      serial.print(integer);
       break;
   }
 }
+
+const char IO::cc = '#';
+const char IO::i = 'i';
+const char IO::o = 'o';
+const char IO::boolean = 'b';
+const char IO::integer = 'i';
+const char IO::percent = 'p';

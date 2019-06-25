@@ -33,6 +33,14 @@ class IO
     int pin;
     String name;
     int value;
+
+    const static char cc;
+    const static char i;
+    const static char o;
+    const static char boolean;
+    const static char integer;
+    const static char percent; 
+
 };
 
 #endif // IO_H

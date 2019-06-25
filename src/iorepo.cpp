@@ -34,8 +34,10 @@ void IORepo::list(Stream &serial){
   for(int i=0; i<size; ++i){
     repos[i].toString(serial);
     if(i< size -1){
-      serial.print("$");
+      serial.print(dollar);
     }
   }
   serial.println();
 }
+
+const char IORepo::dollar = '$';

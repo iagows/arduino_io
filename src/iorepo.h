@@ -17,6 +17,8 @@ class IORepo
   private:
     IO* repos = 0;
     int size=0;
+
+    const static char dollar;
 };
 
 #endif // IOREPO_H
