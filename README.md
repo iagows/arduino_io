@@ -18,8 +18,24 @@ Example:
       delay(500);
     }
 
+== IO types ==
+
+* IN
+* OUT
+
+== Class types ==
+
+* BOOL - does ```digitalWrite/digitalRead```
+* PERCENT - maps analog values to/from 0/100%
+* INT - read/write values without mapping
+
 With this:
 
 * you don't have to remember the pin you are using.
 * you can't read if it's INPUT
 * you can't write if it's OUTPUT
+* you don't have to map to/from percent values
+
+= Next versions =
+
+An repository to store/retrieve sensors/actuators by name
