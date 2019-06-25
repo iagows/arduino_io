@@ -2,16 +2,17 @@
 
 A simple lib to control arduino pins
 
-*#include "io.h"*
-
 ## How to use ##
 
 Example:
+
+    *#include "io.h"*
 
     IO io;
     void setup() {
       io.setup(1, PIN_NUMBER, IO::BOOL, IO::OUT, "sensor/actuator's name");
     }
+    
     void loop() {
       io.set(io.get() == LOW ? HIGH : LOW);
       delay(500);
