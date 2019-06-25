@@ -30,12 +30,12 @@ IO IORepo::get(String name){
   return out;
 }
 
-String IORepo::list(){
-  String out;
+void IORepo::list(Stream &serial){
   for(int i=0; i<size; ++i){
-    out += repos[i].toString();
-    if(i<(size-1)){
-      out += "#"
+    repos[i].toString(serial);
+    if(i< size -1){
+      serial.print("$");
     }
   }
+  serial.println();
 }

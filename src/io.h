@@ -26,7 +26,7 @@ class IO
     String getName();
     int getPin();
 
-    String toString();
+    void toString(Stream &serial);
   private:
     Type type;
     InOut io;

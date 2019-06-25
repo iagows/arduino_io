@@ -12,7 +12,7 @@ class IORepo
 
     void put(int pos, IO io);
     IO get(String name);
-    String list();
+    void list(Stream &serial);
     
   private:
     IO* repos = 0;

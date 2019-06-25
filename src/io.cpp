@@ -59,32 +59,28 @@ int IO::get()
   return value;
 }
 
-String IO::toString()
+void IO::toString(Stream &serial)
 {
-  String out(name + "#");
-
+  serial.print(name);
+  serial.print("#");
   if (io == IN) {
-    out += "i";
+    serial.print("i");
 
   } else {
-    out += "o";
+    serial.print("o");
   }
 
-  out += "#";
+  serial.print("#");
 
   switch (type) {
     case BOOL:
-      out += "bool";
+      serial.print("bool");
       break;
     case PERCENT:
-      out += "percent";
+      serial.print("percent");
       break;
     case INT:
-      out += "int";
+      serial.print("int");
       break;
   }
-
-  out += "#" + value;
-
-  return out;
 }
