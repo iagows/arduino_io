@@ -19,12 +19,12 @@ Example:
     }
 
 ## Types ##
-### IO types ###
+### IO ###
 
 * IN
 * OUT
 
-### Class types ###
+### Class ###
 
 * BOOL - does ```digitalWrite/digitalRead```
 * PERCENT - maps analog values to/from 0/100%
