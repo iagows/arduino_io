@@ -11,7 +11,7 @@ class IORepo
     void setup(int size);
 
     void put(int pos, IO io);
-    IO get(String name);
+    IO get(String &name);
     void list(Stream &serial);
     
   private:

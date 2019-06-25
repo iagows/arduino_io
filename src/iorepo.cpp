@@ -20,7 +20,7 @@ void IORepo::put(int pos, IO io){
   repos[pos] = io;
 }
 
-IO IORepo::get(String name){
+IO IORepo::get(String &name){
   for(int i=0; i<size; ++i){
     if(repos[i].getName() == name){
       return repos[i];
