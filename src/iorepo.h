@@ -12,6 +12,7 @@ class IORepo
 
     void put(int pos, IO io);
     IO get(String name);
+    String list();
     
   private:
     IO* repos = 0;

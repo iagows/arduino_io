@@ -49,3 +49,13 @@ With this:
 * you can't write if it's OUTPUT
 * you don't have to map to/from percent values
 * retrieve your object by its name
+
+For example:
+
+You create an Android app that can talk to Arduino. Your app send a command to ```list``` the arduino services.
+Now your app knows:
+* how many services are there
+* the type (bool, percent etc)
+* the name
+
+With those info, the app can send a command to get the value of service named "A" ou set the value for the service named "B".

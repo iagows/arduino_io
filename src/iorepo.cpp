@@ -29,3 +29,13 @@ IO IORepo::get(String name){
   IO out;
   return out;
 }
+
+String IORepo::list(){
+  String out;
+  for(int i=0; i<size; ++i){
+    out += repos[i].toString();
+    if(i<(size-1)){
+      out += "#"
+    }
+  }
+}
