@@ -3,7 +3,7 @@
 IORepo repo;
 
 void setup() {
-  
+
   IO a;
   a.setup("lamp0", 3, IO::BOOL, IO::OUT);
   IO b;

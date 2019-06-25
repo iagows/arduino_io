@@ -6,16 +6,26 @@ A simple lib to control arduino pins
 
 Example:
 
-    #include "io.h"
+    #include "iorepo.h"
 
-    IO io;
+    IORepo repo;
+
     void setup() {
-      io.setup(1, PIN_NUMBER, IO::BOOL, IO::OUT, "sensor/actuator's name");
+    	IO a;
+    	IO b;
+    	a.setup("lamp0", 3, IO::BOOL, IO::OUT);
+    	b.setup("lamp1", 4, IO::BOOL, IO::OUT);
+
+    	repo.setup(2);
+    	repo.put(0, a);
+    	repo.put(1, b);
+
+    	Serial.begin(9600);
     }
 
     void loop() {
-      io.set(io.get() == LOW ? HIGH : LOW);
-      delay(500);
+    	Serial.println(repo.get("lamp1").getPin());
+    	delay(1000);
     }
 
 ## Types ##
@@ -38,7 +48,4 @@ With this:
 * you can't read if it's INPUT
 * you can't write if it's OUTPUT
 * you don't have to map to/from percent values
-
-# Next versions #
-
-An repository to store/retrieve sensors/actuators by name
+* retrieve your object by its name
