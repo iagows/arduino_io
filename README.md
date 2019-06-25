@@ -18,16 +18,19 @@ Example:
       delay(500);
     }
 
-## IO types ##
+## Types ##
+### IO types ###
 
 * IN
 * OUT
 
-## Class types ##
+### Class types ###
 
 * BOOL - does ```digitalWrite/digitalRead```
 * PERCENT - maps analog values to/from 0/100%
 * INT - read/write values without mapping
+
+## Why use this? ##
 
 With this:
 
