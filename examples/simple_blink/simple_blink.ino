@@ -1,9 +1,8 @@
 #include "iorepo.h"
 
-IORepo repo;
+const IORepo repo;
 
 void setup() {
-
   IO a;
   a.setup("lamp0", 3, IO::BOOL, IO::OUT);
   IO b;
@@ -14,10 +13,12 @@ void setup() {
   repo.put(1, b);
 
   Serial.begin(9600);
+  repo.list(Serial);
 }
 
 void loop() {
   Serial.println(repo.get("lamp1").getPin());
-  delay(1000);
+  
+  delay(5000);
 
 }
