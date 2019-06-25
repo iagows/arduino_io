@@ -58,7 +58,7 @@ Now your app knows:
 * the type (bool, percent etc)
 * the name
 
-With those info, the app can send a command to get the value of service named "A" ou set the value for the service named "B".
+With those info, the app can send a command to get the value of service named "A" or set the value for the service named "B".
 
 ## Thanks to ##
 
