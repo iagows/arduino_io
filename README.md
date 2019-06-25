@@ -59,3 +59,9 @@ Now your app knows:
 * the name
 
 With those info, the app can send a command to get the value of service named "A" ou set the value for the service named "B".
+
+## Thanks to ##
+
+https://hackingmajenkoblog.wordpress.com/2016/02/04/the-evils-of-arduino-strings/
+
+https://www.instructables.com/id/Arduino-String-Manipulation-Using-Minimal-Ram/
