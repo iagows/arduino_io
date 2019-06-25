@@ -18,16 +18,18 @@ class IO
     };
 
     IO();
-    setup(int id, int pin, Type type, InOut io, String name);
+    setup(String name, int pin, Type type, InOut io);
 
     void set(int value);
     int get();
+
+    String getName();
+    int getPin();
 
     String toString();
   private:
     Type type;
     InOut io;
-    int id;
     int pin;
     String name;
     int value;

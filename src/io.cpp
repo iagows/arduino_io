@@ -2,17 +2,24 @@
 
 IO::IO()
 {
-
+  
 }
 
-IO::setup(int id, int pin, IO::Type type, IO::InOut io, String name)
+IO::setup(String name, int pin, IO::Type type, IO::InOut io)
 {
-  this->id = id;
   this->pin = pin;
   this->type = type;
   this->io = io;
   this->name = name;
   pinMode(pin, io == IN ? INPUT : OUTPUT);
+}
+
+String IO::getName(){
+	return name;
+}
+
+int IO::getPin(){
+	return pin;
 }
 
 void IO::set(int value)
@@ -54,7 +61,7 @@ int IO::get()
 
 String IO::toString()
 {
-  String out("" + String(id) + "#" + name + "#");
+  String out(name + "#");
 
   if (io == IN) {
     out += "i";
