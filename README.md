@@ -1,4 +1,4 @@
-# Arduino IO
+# Simple IO Repository
 
 A simple lib to control arduino pins
 
