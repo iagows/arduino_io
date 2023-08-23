@@ -5,42 +5,44 @@
 
 class IO
 {
-  public:
-    enum Type {
-      BOOL,
-      PERCENT,
-      INT
-    };
+public:
+  enum Type
+  {
+    BOOL,
+    PERCENT,
+    INT
+  };
 
-    enum InOut {
-      IN,
-      OUT
-    };
+  enum InOut
+  {
+    IN,
+    OUT
+  };
 
-    IO();
-    setup(String name, int pin, Type type, InOut io);
+  IO();
+  setup(String name, int pin, Type type, InOut io);
 
-    void set(int value);
-    int get();
+  void set(int value);
+  int get();
 
-    String getName();
-    int getPin();
+  String getName();
+  int getPin();
 
-    void toString(Stream &serial);
-  private:
-    Type type;
-    InOut io;
-    int pin;
-    String name;
-    int value;
+  void toString(Stream &serial);
 
-    const static char cc;
-    const static char i;
-    const static char o;
-    const static char boolean;
-    const static char integer;
-    const static char percent; 
+private:
+  Type type;
+  InOut io;
+  int pin;
+  String name;
+  int value;
 
+  const static char cc;
+  const static char i;
+  const static char o;
+  const static char boolean;
+  const static char integer;
+  const static char percent;
 };
 
 #endif // IO_H
