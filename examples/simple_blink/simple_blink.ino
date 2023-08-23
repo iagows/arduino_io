@@ -2,7 +2,8 @@
 
 const IORepo repo;
 
-void setup() {
+void setup()
+{
   IO a;
   a.setup("lamp0", 3, IO::BOOL, IO::OUT);
   IO b;
@@ -16,9 +17,9 @@ void setup() {
   repo.list(Serial);
 }
 
-void loop() {
-  Serial.println(repo.get("lamp1").getPin());
-  
+void loop()
+{
+  String lamp = "lamp1";
+  Serial.println(repo.get(lamp).getPin());
   delay(5000);
-
 }
