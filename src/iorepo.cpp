@@ -4,6 +4,9 @@ IORepo::IORepo()
 {
 }
 
+/**
+ * Arduino's setup
+ */
 void IORepo::setup(int size)
 {
   if (repos != 0)
@@ -14,6 +17,9 @@ void IORepo::setup(int size)
   this->size = size;
 }
 
+/**
+ * Adds an IO object to the repository
+ */
 void IORepo::put(int pos, IO io)
 {
   if (pos >= size)
@@ -23,6 +29,9 @@ void IORepo::put(int pos, IO io)
   repos[pos] = io;
 }
 
+/**
+ * Get's the IO object from the repository
+ */
 IO IORepo::get(String &name)
 {
   for (int i = 0; i < size; ++i)
@@ -36,6 +45,9 @@ IO IORepo::get(String &name)
   return out;
 }
 
+/**
+ * Writes all IO items into the serial
+ */
 void IORepo::list(Stream &serial)
 {
   for (int i = 0; i < size; ++i)

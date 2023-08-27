@@ -4,7 +4,7 @@ IO::IO()
 {
 }
 
-IO::setup(String name, int pin, IO::Type type, IO::InOut io)
+void IO::setup(String name, int pin, IO::Type type, IO::InOut io)
 {
   this->pin = pin;
   this->type = type;

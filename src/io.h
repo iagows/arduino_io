@@ -20,7 +20,7 @@ public:
   };
 
   IO();
-  setup(String name, int pin, Type type, InOut io);
+  void setup(String name, int pin, Type type, InOut io);
 
   void set(int value);
   int get();

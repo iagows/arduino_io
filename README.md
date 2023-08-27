@@ -69,3 +69,9 @@ With those info, the app can send a command to get the value of service named "A
 [instructables](https://www.instructables.com/id/Arduino-String-Manipulation-Using-Minimal-Ram/)
 
 [hackingmajenkoblog](https://hackingmajenkoblog.wordpress.com/2016/02/04/the-evils-of-arduino-strings/)
+
+## Version Log
+
+### 1.05
+
+Fixed the example

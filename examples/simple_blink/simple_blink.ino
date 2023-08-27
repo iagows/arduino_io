@@ -1,6 +1,6 @@
 #include "iorepo.h"
 
-const IORepo repo;
+IORepo repo;
 
 void setup()
 {

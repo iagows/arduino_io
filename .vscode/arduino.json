@@ -1,0 +1,4 @@
+{
+    "sketch": "examples/simple_blink/simple_blink.ino",
+    "board": "arduino:avr:uno"
+}
