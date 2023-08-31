@@ -1,5 +1,5 @@
-#ifndef REPOSITORY_H
-#define REPOSITORY_H
+#ifndef SIMPLE_REPOSITORY_H
+#define SIMPLE_REPOSITORY_H
 
 #include "Arduino.h"
 #include "bool_sensor.h"
@@ -8,6 +8,7 @@
 
 class Repository
 {
+public:
     Repository(int items);
     ~Repository();
     void put(int pos, BoolSensor &bs);
@@ -23,4 +24,4 @@ private:
     IO *find(String name);
 };
 
-#endif // REPOSITORY_H
+#endif // SIMPLE_REPOSITORY_H

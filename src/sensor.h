@@ -1,5 +1,5 @@
-#ifndef IN_H
-#define IN_H
+#ifndef SENSOR_H
+#define SENSOR_H
 
 #include "io.h"
 
@@ -15,4 +15,4 @@ public:
     virtual T getValue() = 0;
 };
 
-#endif // IN_H
+#endif // SENSOR_H

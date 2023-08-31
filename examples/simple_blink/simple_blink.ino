@@ -1,6 +1,6 @@
 #include "bool_sensor.h"
 #include "percent_sensor.h"
-#include "repository.h"
+#include "Simple_Repository_IO.h"
 
 const String buttonName = "button";
 const String varistorName = "varistor";

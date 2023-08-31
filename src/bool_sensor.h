@@ -1,5 +1,5 @@
-#ifndef BOOL_SENSOR_H
-#define BOOL_SENSOR_H
+#ifndef BOOL_SENSOR_S_H
+#define BOOL_SENSOR_S_H
 
 #include "sensor.h"
 
@@ -10,4 +10,4 @@ public:
     bool getValue();
 };
 
-#endif // BOOL_SENSOR_H
+#endif // BOOL_SENSOR_S_H
