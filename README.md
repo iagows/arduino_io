@@ -72,6 +72,13 @@ With those info, the app can send a command to get the value of service named "A
 
 ## Version Log
 
-### 1.05
+### 2.0.0
+
+Breaking changes:
+
+* IO now don't have get/set anymore
+* IO was split into Sensor and Sender
+
+### 1.0.5
 
 Fixed the example

@@ -1,4 +1,5 @@
 {
     "sketch": "examples/simple_blink/simple_blink.ino",
-    "board": "arduino:avr:uno"
+    "board": "arduino:avr:uno",
+    "programmer": "avrisp"
 }

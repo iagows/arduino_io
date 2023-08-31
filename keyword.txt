@@ -1,25 +1,30 @@
 #######################################
 # Syntax Coloring Map For Blink
 #######################################
- 
+
 #######################################
 # Datatypes (KEYWORD1)
 #######################################
- 
+
+BoolFeedback KEYWORD1
+BoolSensor KEYWORD1
+Feedback KEYWORD1
 IO KEYWORD1
+PercentSensor KEYWORD1
+Sensor KEYWORD1
+Repository KEYWORD1
  
 #######################################
 # Methods and Functions (KEYWORD2)
 #######################################
  
-get KEYWORD2
-set KEYWORD2
+getValue KEYWORD2
+setValue KEYWORD2
+getType KEYWORD2
 getName KEYWORD2
-getPin KEYWORD2
-toString KEYWORD2
 put KEYWORD2
-setup KEYWORD2
-list KEYWORD2
+getBoolean KEYWORD2
+getPercent KEYWORD2
  
 #######################################
 # Constants (LITERAL1)

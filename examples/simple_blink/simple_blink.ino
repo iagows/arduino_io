@@ -1,25 +1,21 @@
-#include "iorepo.h"
+#include "bool_sensor.h"
+#include "percent_sensor.h"
+#include "repository.h"
 
-IORepo repo;
-
+const String buttonName = "button";
+const String varistorName = "varistor";
+Repository hub(2);
 void setup()
 {
-  IO a;
-  a.setup("lamp0", 3, IO::BOOL, IO::OUT);
-  IO b;
-  b.setup("lamp1", 4, IO::BOOL, IO::OUT);
-
-  repo.setup(2);
-  repo.put(0, a);
-  repo.put(1, b);
+  BoolSensor bs(7, buttonName);
+  PercentSensor ps(8, varistorName);
+  hub.put(0, bs);
+  hub.put(1, ps);
 
   Serial.begin(9600);
-  repo.list(Serial);
 }
 
 void loop()
 {
-  String lamp = "lamp1";
-  Serial.println(repo.get(lamp).getPin());
-  delay(5000);
+  Serial.println(hub.getBoolean(buttonName));
 }
