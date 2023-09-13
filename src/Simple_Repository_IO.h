@@ -15,8 +15,10 @@ public:
     void put(int pos, BoolFeedback &bf);
     void put(int pos, PercentSensor &ps);
 
-    bool getBoolean(String name);
-    int getPercent(String name);
+    bool readBoolean(String name);
+    int readPercent(String name);
+    void write(String name, bool value);
+    void write(String name, int value);
 
 private:
     IO **list = 0;

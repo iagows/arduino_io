@@ -4,7 +4,7 @@ BoolSensor::BoolSensor(int pin, String name) : Sensor<bool>(pin, name)
 {
 }
 
-bool BoolSensor::getValue()
+bool BoolSensor::readValue()
 {
     return digitalRead(this->pin);
 }

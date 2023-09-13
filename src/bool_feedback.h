@@ -7,8 +7,6 @@ class BoolFeedback : public Feedback<bool>
 {
 public:
     BoolFeedback(int pin, String name);
-
-protected:
     void writeValue(bool value);
 };
 

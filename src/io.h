@@ -12,7 +12,7 @@ enum Type
 class IO
 {
 public:
-  IO();
+  IO(){};
   IO(Type type, int pin, String name);
   ~IO() {}
   Type getType();

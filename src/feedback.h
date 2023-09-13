@@ -9,17 +9,16 @@ class Feedback : public IO
 public:
     Feedback(int pin, String name) : IO(OUT, pin, name){};
     ~Feedback(){};
+
     void setValue(T value)
     {
         this->value = value;
         this->writeValue(value);
     };
-    T getValue()
+    T readValue()
     {
         return this->value;
     };
-
-protected:
     virtual void writeValue(T value) = 0;
 
 private:
