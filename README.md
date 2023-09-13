@@ -7,27 +7,28 @@ A simple lib to control arduino pins
 Example:
 
 ``` cpp
-  #include "iorepo.h"
+#include "bool_sensor.h"
+#include "percent_sensor.h"
+#include "Simple_Repository_IO.h"
 
-  IORepo repo;
+const String buttonName = "button";
+const String varistorName = "varistor";
+Repository hub(2);
+void setup()
+{
+  BoolSensor bs(7, buttonName);
+  PercentSensor ps(8, varistorName);
+  hub.put(0, bs);
+  hub.put(1, ps);
 
-  void setup() {
-    IO a;
-    IO b;
-    a.setup("lamp0", 3, IO::BOOL, IO::OUT);
-    b.setup("lamp1", 4, IO::BOOL, IO::OUT);
+  Serial.begin(9600);
+}
 
-    repo.setup(2);
-    repo.put(0, a);
-    repo.put(1, b);
+void loop()
+{
+  Serial.println(hub.getBoolean(buttonName));
+}
 
-    Serial.begin(9600);
-  }
-
-  void loop() {
-    Serial.println(repo.get("lamp1").getPin());
-    delay(1000);
-  }
 ```
 
 ## Types
