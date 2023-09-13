@@ -15,12 +15,15 @@ public:
     void put(int pos, BoolFeedback &bf);
     void put(int pos, PercentSensor &ps);
 
-    bool readBoolean(String name);
-    int readPercent(String name);
-    void write(String name, bool value);
+    String read(String name);
     void write(String name, int value);
+    void write(String name, bool value);
 
     String describe();
+
+    // maybe you find some use for those
+    int readPercent(String name);
+    bool readBoolean(String name);
 
 private:
     String name;

@@ -49,6 +49,28 @@ IO *Repository::find(String name)
     return;
 }
 
+String Repository::read(String name)
+{
+    String out = "";
+
+    IO *item = this->find(name);
+
+    BoolSensor *bs = static_cast<BoolSensor *>(item);
+    if (bs != nullptr)
+    {
+        out.concat(bs->read());
+        return out;
+    }
+
+    PercentSensor *ps = static_cast<PercentSensor *>(item);
+    if (ps != nullptr)
+    {
+        out.concat(bs->read());
+        return out;
+    }
+    return "";
+}
+
 bool Repository::readBoolean(String name)
 {
     IO *item = this->find(name);
