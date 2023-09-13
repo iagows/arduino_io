@@ -7,7 +7,7 @@ class BoolSensor : public Sensor<bool>
 {
 public:
     BoolSensor(int pin, String name);
-    bool readValue();
+    bool read();
 };
 
 #endif // BOOL_SENSOR_S_H

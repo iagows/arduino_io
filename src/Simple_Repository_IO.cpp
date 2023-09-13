@@ -4,42 +4,43 @@
 #include "percent_sensor.h"
 #include "percent_feedback.h"
 
-Repository::Repository(int size)
+Repository::Repository(String repositoryName, int size)
 {
+    this->name = repositoryName;
     this->size = size;
-    if (this->list != 0)
+    if (this->items != 0)
     {
-        delete[] list;
+        delete[] items;
     }
 
-    this->list = new IO *[size];
+    this->items = new IO *[size];
 }
 
 Repository::~Repository()
 {
-    delete[] this->list;
+    delete[] this->items;
 }
 
 void Repository::put(int pos, BoolSensor &bs)
 {
-    this->list[pos] = &bs;
+    this->items[pos] = &bs;
 }
 
 void Repository::put(int pos, BoolFeedback &bf)
 {
-    this->list[pos] = &bf;
+    this->items[pos] = &bf;
 }
 
 void Repository::put(int pos, PercentSensor &ps)
 {
-    this->list[pos] = &ps;
+    this->items[pos] = &ps;
 }
 
 IO *Repository::find(String name)
 {
     for (int i = 0; i < this->size; ++i)
     {
-        IO *item = this->list[i];
+        IO *item = this->items[i];
         if (item->getName() == name)
         {
             return item;
@@ -54,7 +55,7 @@ bool Repository::readBoolean(String name)
     BoolSensor *bs = static_cast<BoolSensor *>(item);
     if (bs != nullptr)
     {
-        return bs->readValue();
+        return bs->read();
     }
     return false;
 }
@@ -65,7 +66,7 @@ int Repository::readPercent(String name)
     PercentSensor *ps = static_cast<PercentSensor *>(item);
     if (ps != nullptr)
     {
-        return ps->readValue();
+        return ps->read();
     }
     return false;
 }
@@ -76,7 +77,7 @@ void Repository::write(String name, bool value)
     BoolFeedback *bs = static_cast<BoolFeedback *>(item);
     if (bs != nullptr)
     {
-        bs->writeValue(value);
+        bs->write(value);
     }
 }
 
@@ -86,6 +87,19 @@ void Repository::write(String name, int value)
     PercentFeedback *ps = static_cast<PercentFeedback *>(item);
     if (ps != nullptr)
     {
-        ps->writeValue(value);
+        ps->write(value);
     }
+}
+
+String Repository::describe()
+{
+    String out = "{name:\"";
+    out.concat(this->name);
+    out.concat("\",");
+    for (int i = 0; i < size; ++i)
+    {
+        out.concat(items[i]->describe());
+    }
+    out.concat("}");
+    return out;
 }

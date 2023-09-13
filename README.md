@@ -73,6 +73,17 @@ With those info, the app can send a command to get the value of service named "A
 
 ## Version Log
 
+### 2.1.0
+
+Added:
+
+* The objects can describe themselves in json
+* The repository can list all IO in json
+
+Breaking changes:
+
+* Renamed functions and classes names
+
 ### 2.0.0
 
 Breaking changes:

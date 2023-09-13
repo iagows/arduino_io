@@ -12,7 +12,7 @@ public:
         pinMode(pin, INPUT);
     }
     ~Sensor(){};
-    virtual T readValue() = 0;
+    virtual T read() = 0;
 };
 
 #endif // SENSOR_H

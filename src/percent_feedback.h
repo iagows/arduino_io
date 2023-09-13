@@ -8,6 +8,7 @@ class PercentFeedback : public Feedback<int>
 public:
     PercentFeedback(int pin, String name);
 
+protected:
     void writeValue(int value);
 };
 

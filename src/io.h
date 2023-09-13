@@ -17,6 +17,7 @@ public:
   ~IO() {}
   Type getType();
   String getName();
+  String describe();
 
 protected:
   int pin;

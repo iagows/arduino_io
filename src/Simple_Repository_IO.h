@@ -9,7 +9,7 @@
 class Repository
 {
 public:
-    Repository(int items);
+    Repository(String repositoryName, int items);
     ~Repository();
     void put(int pos, BoolSensor &bs);
     void put(int pos, BoolFeedback &bf);
@@ -20,8 +20,11 @@ public:
     void write(String name, bool value);
     void write(String name, int value);
 
+    String describe();
+
 private:
-    IO **list = 0;
+    String name;
+    IO **items = 0;
     int size;
     IO *find(String name);
 };

@@ -9,7 +9,7 @@ public:
     PercentSensor(int pin, String name);
     PercentSensor(int pin, String name, int min);
     PercentSensor(int pin, String name, int min, int max);
-    int readValue();
+    int read();
 
 private:
     int min;

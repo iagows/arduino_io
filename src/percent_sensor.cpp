@@ -18,7 +18,7 @@ PercentSensor::PercentSensor(int pin, String name, int min, int max) : Sensor<in
     this->max = max;
 }
 
-int PercentSensor::readValue()
+int PercentSensor::read()
 {
     return map(analogRead(this->pin), 0, 1023, this->min, this->max);
 }

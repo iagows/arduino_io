@@ -11,6 +11,7 @@ BoolSensor KEYWORD1
 Feedback KEYWORD1
 IO KEYWORD1
 PercentSensor KEYWORD1
+PercentSensor KEYWORD1
 Sensor KEYWORD1
 Repository KEYWORD1
  
@@ -18,13 +19,15 @@ Repository KEYWORD1
 # Methods and Functions (KEYWORD2)
 #######################################
  
-getValue KEYWORD2
-setValue KEYWORD2
 getType KEYWORD2
 getName KEYWORD2
+describe KEYWORD2
+execute KEYWORD2
 put KEYWORD2
 getBoolean KEYWORD2
 getPercent KEYWORD2
+read KEYWORD2
+write KEYWORD2
  
 #######################################
 # Constants (LITERAL1)
