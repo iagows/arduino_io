@@ -8,36 +8,41 @@ Example:
 
 ``` cpp
 #include "bool_component.h"
-#include "Simple_Repository_IO.h"
 #include "ccu.h"
 #include "command_factory.h"
+#include "percent_component.h"
+#include "Simple_Repository_IO.h"
 
-const String buttonName = "button";
+const String led = "led";
+const String photoSensor = "photo";
 CentralCommandUnit ccu;
 
 void setup()
 {
-    Repository *hub = new Repository("hub", 1);
+  Repository *hub = new Repository("hub", 2);
 
-    BoolComponent *bc = new BoolComponent(LED_BUILTIN, buttonName, Component::IoType::OUT);
-    hub->put(0, bc);
+  BoolComponent *bc = new BoolComponent(LED_BUILTIN, led, Component::IoType::OUT);
+  PercentComponent *pc = new PercentComponent(A0, photoSensor, Component::IoType::IN);
+  hub->put(0, bc);
+  hub->put(1, pc);
 
-    ccu.setup(hub);
+  ccu.setup(hub);
 
-    Serial.begin(9600);
+  Serial.begin(9600);
 
-    String result = ccu.execute(CommandFactory::describe());
-    Serial.println(result);
+  String result = ccu.execute(CommandFactory::describe());
+  Serial.println(result);
 }
 
 void loop()
 {
-    ccu.execute(CommandFactory::write(buttonName, true));
-    delay(1000);
-    ccu.execute(CommandFactory::write(buttonName, false));
-    delay(1000);
-}
+  String value = ccu.execute(CommandFactory::read(photoSensor));
 
+  const bool isBright = value.toInt() > 50;
+
+  ccu.execute(CommandFactory::write(led, !isBright));
+  delay(100);
+}
 
 ```
 
@@ -46,9 +51,21 @@ void loop()
 With this:
 
 * you don't have to remember the pin you are using.
-* you can't read if it's INPUT
-* you can't write if it's OUTPUT
+* you can read if it's OUTPUT
+  * Lets consider that:
+    * your arduino hub is connected to
+      * a Raspberry Pi
+      * and the hub has a lamp
+    * The raspberry knows the lamp state (on)
+    * for some reason someone
+      * re-boots the raspberry pi
+      * presses a button to turn off the lamp
+    * when the Raspberry Pi is on, it must ask current hub state
+      * this means: reading the lamp state
+* you can't write if it's INPUT
 * you don't have to map to/from percent values
+  * you always get a 0-100 value
+  * you always set a 0-100 value
 * retrieve your object by its name
 
 For example:
@@ -63,6 +80,10 @@ Now your app knows:
 With those info, the app can send a command to get the value of service named "A" or set the value for the service named "B".
 
 ## Version Log
+
+### 3.0.1
+
+Changed the example to use the 3 main functions: read, describe, and write.
 
 ### 3.0.0
 
