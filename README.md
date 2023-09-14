@@ -7,44 +7,41 @@ A simple lib to control arduino pins
 Example:
 
 ``` cpp
-#include "bool_sensor.h"
-#include "percent_sensor.h"
+#include "bool_component.h"
 #include "Simple_Repository_IO.h"
+#include "ccu.h"
+#include "command_factory.h"
 
 const String buttonName = "button";
-const String varistorName = "varistor";
-Repository hub(2);
+CentralCommandUnit ccu;
+
 void setup()
 {
-  BoolSensor bs(7, buttonName);
-  PercentSensor ps(8, varistorName);
-  hub.put(0, bs);
-  hub.put(1, ps);
+    Repository *hub = new Repository("hub", 1);
 
-  Serial.begin(9600);
+    BoolComponent *bc = new BoolComponent(LED_BUILTIN, buttonName, Component::IoType::OUT);
+    hub->put(0, bc);
+
+    ccu.setup(hub);
+
+    Serial.begin(9600);
+
+    String result = ccu.execute(CommandFactory::describe());
+    Serial.println(result);
 }
 
 void loop()
 {
-  Serial.println(hub.getBoolean(buttonName));
+    ccu.execute(CommandFactory::write(buttonName, true));
+    delay(1000);
+    ccu.execute(CommandFactory::write(buttonName, false));
+    delay(1000);
 }
+
 
 ```
 
-## Types
-
-### IO
-
-* IN
-* OUT
-
-### Class
-
-* BOOL - does ```digitalWrite/digitalRead```
-* PERCENT - maps analog values to/from 0/100%
-* INT - read/write values without mapping
-
-## Why use this?
+## Why use this library?
 
 With this:
 
@@ -65,13 +62,19 @@ Now your app knows:
 
 With those info, the app can send a command to get the value of service named "A" or set the value for the service named "B".
 
-## Thanks to
-
-[instructables](https://www.instructables.com/id/Arduino-String-Manipulation-Using-Minimal-Ram/)
-
-[hackingmajenkoblog](https://hackingmajenkoblog.wordpress.com/2016/02/04/the-evils-of-arduino-strings/)
-
 ## Version Log
+
+### 3.0.0
+
+Re-wrote the library and tested in a real Arduino UNO.
+
+### 2.2.0
+
+Added:
+
+* A command factory
+  * Should be used in arduino only projects.
+  * The command should come from the serial or wi-fi
 
 ### 2.1.0
 

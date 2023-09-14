@@ -15,8 +15,8 @@ public:
 
     String describe();
     String read(String name);
-    template <typename T>
-    String write(String name, T value);
+    String write(String name, bool value);
+    String write(String name, int value);
 
 private:
     Repository *repository;

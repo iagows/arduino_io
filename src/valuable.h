@@ -13,7 +13,7 @@ public:
 
     T read()
     {
-        if (this->isOutput())
+        if (!this->isOutput())
         {
             this->value = this->onRead();
         }
@@ -21,7 +21,7 @@ public:
     };
     void write(T value)
     {
-        if (!this->isOutput())
+        if (this->isOutput())
         {
             this->value = value;
             this->onWrite();

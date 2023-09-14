@@ -23,8 +23,12 @@ public:
         return "r," + name;
     }
 
-    template <typename T>
-    static String write(String name, T data)
+    static String write(String name, bool data)
+    {
+        return "w," + name + "," + (data ? "true" : "false");
+    }
+
+    static String write(String name, int data)
     {
         return "w," + name + "," + String(data);
     }

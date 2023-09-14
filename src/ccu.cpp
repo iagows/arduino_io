@@ -15,16 +15,12 @@ CentralCommandUnit::~CentralCommandUnit()
   delete this->repository;
 }
 
-// command examples:
-// d
-// r,objA
-// w,objC,true
-// w,objD,10 // 10%
 String CentralCommandUnit::execute(String command)
 {
   int comma1 = command.indexOf(',');
   int comma2 = command.indexOf(',', comma1 + 1);
   String commandName = command.substring(0, comma1);
+
   if (CommandFactory::isDescribe(commandName))
   {
     return this->describe();
@@ -35,18 +31,19 @@ String CentralCommandUnit::execute(String command)
   {
     return this->read(name);
   }
-  // else if (commandName == WRITE)
-  // {
-  //   String valueString = command.substring(comma2 + 1);
-  //   if (valueString == "true" || valueString == "false")
-  //   {
-  //     return this->write(name, valueString == "true");
-  //   }
-  //   else
-  //   {
-  //     return this->write(name, valueString.toInt());
-  //   }
-  // }
+  else if (CommandFactory::isWrite(commandName))
+  {
+    String valueString = command.substring(comma2 + 1);
+
+    if (valueString == "true" || valueString == "false")
+    {
+      return this->write(name, valueString == "true" ? true : false);
+    }
+    else
+    {
+      return this->write(name, (int)valueString.toInt());
+    }
+  }
   return "ERROR";
 }
 
@@ -60,8 +57,13 @@ String CentralCommandUnit::read(String name)
   return this->repository->read(name);
 }
 
-template <typename T>
-String CentralCommandUnit::write(String name, T value)
+String CentralCommandUnit::write(String name, bool value)
+{
+  this->repository->write(name, value);
+  return "ok";
+}
+
+String CentralCommandUnit::write(String name, int value)
 {
   this->repository->write(name, value);
   return "ok";

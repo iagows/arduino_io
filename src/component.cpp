@@ -9,6 +9,9 @@ Component::Component(int pin, String name, IoType ioType, DataType dataType)
     this->name = name;
     this->ioType = ioType;
     this->dataType = dataType;
+
+    int mode = ioType == Component::IoType::IN ? INPUT : OUTPUT;
+    pinMode(pin, mode);
 };
 
 String Component::getName()

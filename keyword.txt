@@ -3,32 +3,41 @@
 #######################################
 
 #######################################
-# Datatypes (KEYWORD1)
+# Data types (KEYWORD1)
 #######################################
 
-BoolFeedback KEYWORD1
-BoolSensor KEYWORD1
-Feedback KEYWORD1
-IO KEYWORD1
-PercentSensor KEYWORD1
-PercentSensor KEYWORD1
-Sensor KEYWORD1
+BoolComponent KEYWORD1
+CentralCommandUnit KEYWORD1
+CommandFactory KEYWORD1
+Component KEYWORD1
+PercentComponent KEYWORD1
 Repository KEYWORD1
  
 #######################################
 # Methods and Functions (KEYWORD2)
 #######################################
  
-getType KEYWORD2
-getName KEYWORD2
-describe KEYWORD2
+setup KEYWORD2
 execute KEYWORD2
-put KEYWORD2
-getBoolean KEYWORD2
-getPercent KEYWORD2
+describe KEYWORD2
 read KEYWORD2
 write KEYWORD2
+isRead KEYWORD2
+isDescribe KEYWORD2
+isWrite KEYWORD2
+getName KEYWORD2
+isBoolean KEYWORD2
+isPercent KEYWORD2
+isInput KEYWORD2
+isOutput KEYWORD2
+readPercent KEYWORD2
+readBoolean KEYWORD2
+put KEYWORD2
  
 #######################################
 # Constants (LITERAL1)
 #######################################
+
+READ LITERAL1
+WRITE LITERAL1
+DESCRIBE LITERAL1
