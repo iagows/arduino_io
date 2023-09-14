@@ -1,5 +1,10 @@
 #include "bool_component.h"
 
+const String BoolComponent::keyValue(String key, bool value)
+{
+    return key + ": " + (value ? "true" : "false") + ",";
+};
+
 String BoolComponent::describeMore()
 {
     return keyValue(VALUE, this->read());
@@ -14,8 +19,3 @@ bool BoolComponent::onRead()
 {
     return digitalRead(this->getPin()) == HIGH;
 }
-
-const String keyValue(String key, bool value)
-{
-    return key + ": " + (value ? "true" : "false") + ",";
-};

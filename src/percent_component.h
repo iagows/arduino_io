@@ -13,6 +13,9 @@ protected:
     int onRead();
     void onWrite();
     String describeMore();
+
+private:
+    const String keyValue(String key, int value);
 };
 
 #endif // INT_COMPONENT_H

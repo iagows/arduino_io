@@ -4,9 +4,6 @@
 #include "Arduino.h"
 #include "Simple_Repository_IO.h"
 
-const static String WRITE = "w";
-const static String READ = "r";
-const static String DESCRIBE = "d";
 class CentralCommandUnit
 {
 public:

@@ -1,6 +1,8 @@
 #ifndef COMPONENT_H
 #define COMPONENT_H
 
+#include "Arduino.h"
+
 class Component
 {
 public:
@@ -32,6 +34,10 @@ protected:
     int getPin();
     virtual String describeMore() = 0;
 
+    String keyValue(String key, String value);
+    String keyValue(String key, Component::IoType io);
+    String keyValue(String key, Component::DataType dt);
+
 private:
     int pin;
     String name;
@@ -41,32 +47,6 @@ private:
     String describeIo();
     String describeData();
     String describeName();
-};
-
-String keyValue(String key, String value)
-{
-    return key + ": \"" + value + "\",";
-};
-
-String keyValue(String key, Component::IoType io)
-{
-    return key + ": " + (io == Component::IoType::IN ? "input" : "output") + ",";
-};
-
-String keyValue(String key, Component::DataType dt)
-{
-    switch (dt)
-    {
-    case Component::DataType::BOOLEAN:
-        return key + ": \"boolean\",";
-        break;
-    case Component::DataType::PERCENT:
-        return key + ": \"percent\",";
-        break;
-    default:
-        return key + ": \"error\",";
-        break;
-    }
 };
 
 #endif // COMPONENT_H

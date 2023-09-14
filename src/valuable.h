@@ -34,10 +34,10 @@ protected:
     virtual void onWrite() = 0;
     virtual String describeMore() = 0;
 
-    static const String VALUE = "value";
-
 private:
     T value;
 };
+
+const static String VALUE = "value";
 
 #endif // VALUABLE_COMPONENT_H

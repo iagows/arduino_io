@@ -1,4 +1,5 @@
 #include "ccu.h"
+#include "command_factory.h"
 
 CentralCommandUnit::CentralCommandUnit()
 {
@@ -24,13 +25,13 @@ String CentralCommandUnit::execute(String command)
   int comma1 = command.indexOf(',');
   int comma2 = command.indexOf(',', comma1 + 1);
   String commandName = command.substring(0, comma1);
-  if (commandName == DESCRIBE)
+  if (CommandFactory::isDescribe(commandName))
   {
     return this->describe();
   }
 
   String name = command.substring(comma1 + 1, comma2);
-  if (commandName == READ)
+  if (CommandFactory::isRead(commandName))
   {
     return this->read(name);
   }

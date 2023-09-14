@@ -13,6 +13,9 @@ protected:
     bool onRead();
     void onWrite();
     String describeMore();
+
+private:
+    const String keyValue(String key, bool value);
 };
 
 #endif // BOOL_COMPONENT_H
