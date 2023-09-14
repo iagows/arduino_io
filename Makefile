@@ -17,3 +17,6 @@ tag:	# tag example
 	@tag=$$(echo '$(filter-out $@,$(MAKECMDGOALS))' | tr -d '[:space:]'); \
 	git tag $$tag
 	@git push origin --tags
+
+permission:
+	@sudo chmod a+rw /dev/ttyACM0

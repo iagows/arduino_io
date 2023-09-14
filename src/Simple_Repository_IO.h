@@ -11,12 +11,13 @@ class Repository
 public:
     Repository(String repositoryName, int items);
     ~Repository();
-    void put(int pos, BoolSensor &bs);
-    void put(int pos, BoolFeedback &bf);
-    void put(int pos, PercentSensor &ps);
+    void put(int pos, BoolSensor *bs);
+    void put(int pos, BoolFeedback *bf);
+    void put(int pos, PercentSensor *ps);
 
     String read(String name);
     void write(String name, int value);
+    void write(String name, long value);
     void write(String name, bool value);
 
     String describe();

@@ -21,19 +21,19 @@ Repository::~Repository()
     delete[] this->items;
 }
 
-void Repository::put(int pos, BoolSensor &bs)
+void Repository::put(int pos, BoolSensor *bs)
 {
-    this->items[pos] = &bs;
+    this->items[pos] = bs;
 }
 
-void Repository::put(int pos, BoolFeedback &bf)
+void Repository::put(int pos, BoolFeedback *bf)
 {
-    this->items[pos] = &bf;
+    this->items[pos] = bf;
 }
 
-void Repository::put(int pos, PercentSensor &ps)
+void Repository::put(int pos, PercentSensor *ps)
 {
-    this->items[pos] = &ps;
+    this->items[pos] = ps;
 }
 
 IO *Repository::find(String name)
@@ -68,7 +68,7 @@ String Repository::read(String name)
         out.concat(bs->read());
         return out;
     }
-    return "";
+    return "NOPE";
 }
 
 bool Repository::readBoolean(String name)
@@ -113,15 +113,24 @@ void Repository::write(String name, int value)
     }
 }
 
+void Repository::write(String name, long value)
+{
+    IO *item = this->find(name);
+    PercentFeedback *ps = static_cast<PercentFeedback *>(item);
+    if (ps != nullptr)
+    {
+        ps->write(value);
+    }
+}
+
 String Repository::describe()
 {
-    String out = "{name:\"";
-    out.concat(this->name);
-    out.concat("\",");
+    String out = "{name:\"" + this->name + "\",items:[";
+
     for (int i = 0; i < size; ++i)
     {
-        out.concat(items[i]->describe());
+        out.concat(items[i]->describe() + ",");
     }
-    out.concat("}");
+    out.concat("]}");
     return out;
 }
