@@ -1,8 +1,6 @@
 #include "Simple_Repository_IO.h"
-#include "bool_sensor.h"
-#include "bool_feedback.h"
-#include "percent_sensor.h"
-#include "percent_feedback.h"
+#include "bool_component.h"
+#include "percent_component.h"
 
 Repository::Repository(String repositoryName, int size)
 {
@@ -13,7 +11,7 @@ Repository::Repository(String repositoryName, int size)
         delete[] items;
     }
 
-    this->items = new IO *[size];
+    this->items = new Component *[size];
 }
 
 Repository::~Repository()
@@ -21,105 +19,82 @@ Repository::~Repository()
     delete[] this->items;
 }
 
-void Repository::put(int pos, BoolSensor *bs)
+void Repository::put(int pos, Component *v)
 {
-    this->items[pos] = bs;
-}
-
-void Repository::put(int pos, BoolFeedback *bf)
-{
-    this->items[pos] = bf;
-}
-
-void Repository::put(int pos, PercentSensor *ps)
-{
-    this->items[pos] = ps;
-}
-
-IO *Repository::find(String name)
-{
-    for (int i = 0; i < this->size; ++i)
-    {
-        IO *item = this->items[i];
-        if (item->getName() == name)
-        {
-            return item;
-        }
-    }
-    return;
+    this->items[pos] = v;
 }
 
 String Repository::read(String name)
 {
-    String out = "";
 
-    IO *item = this->find(name);
-
-    BoolSensor *bs = static_cast<BoolSensor *>(item);
-    if (bs != nullptr)
+    Component *item = this->find(name);
+    if (item->isBoolean())
     {
-        out.concat(bs->read());
-        return out;
+        BoolComponent *bc = static_cast<BoolComponent *>(item);
+        if (bc != nullptr)
+        {
+            return String(bc->read());
+        }
+    }
+    else if (item->isPercent())
+    {
+        PercentComponent *pc = static_cast<PercentComponent *>(item);
+        if (pc != nullptr)
+        {
+            return String(pc->read());
+        }
     }
 
-    PercentSensor *ps = static_cast<PercentSensor *>(item);
-    if (ps != nullptr)
-    {
-        out.concat(bs->read());
-        return out;
-    }
     return "NOPE";
 }
 
 bool Repository::readBoolean(String name)
 {
-    IO *item = this->find(name);
-    BoolSensor *bs = static_cast<BoolSensor *>(item);
-    if (bs != nullptr)
+    Component *item = this->find(name);
+    if (item->isBoolean())
     {
-        return bs->read();
+        BoolComponent *bc = static_cast<BoolComponent *>(item);
+        if (bc != nullptr)
+        {
+            return bc->read();
+        }
     }
     return false;
 }
 
 int Repository::readPercent(String name)
 {
-    IO *item = this->find(name);
-    PercentSensor *ps = static_cast<PercentSensor *>(item);
-    if (ps != nullptr)
+    Component *item = this->find(name);
+    PercentComponent *pc = static_cast<PercentComponent *>(item);
+    if (pc != nullptr)
     {
-        return ps->read();
+        return pc->read();
     }
-    return false;
 }
 
 void Repository::write(String name, bool value)
 {
-    IO *item = this->find(name);
-    BoolFeedback *bs = static_cast<BoolFeedback *>(item);
-    if (bs != nullptr)
+    Component *item = this->find(name);
+    if (item->isBoolean())
     {
-        bs->write(value);
+        BoolComponent *bc = static_cast<BoolComponent *>(item);
+        if (bc != nullptr)
+        {
+            bc->write(value);
+        }
     }
 }
 
 void Repository::write(String name, int value)
 {
-    IO *item = this->find(name);
-    PercentFeedback *ps = static_cast<PercentFeedback *>(item);
-    if (ps != nullptr)
+    Component *item = this->find(name);
+    if (item->isPercent())
     {
-        ps->write(value);
-    }
-}
-
-void Repository::write(String name, long value)
-{
-    IO *item = this->find(name);
-    PercentFeedback *ps = static_cast<PercentFeedback *>(item);
-    if (ps != nullptr)
-    {
-        ps->write(value);
+        PercentComponent *pc = static_cast<PercentComponent *>(item);
+        if (pc != nullptr)
+        {
+            pc->write(value);
+        }
     }
 }
 
@@ -133,4 +108,17 @@ String Repository::describe()
     }
     out.concat("]}");
     return out;
+}
+
+Component *Repository::find(String name)
+{
+    for (int i = 0; i < this->size; ++i)
+    {
+        Component *item = this->items[i];
+        if (item->getName() == name)
+        {
+            return item;
+        }
+    }
+    return;
 }
