@@ -100,11 +100,15 @@ void Repository::write(String name, int value)
 
 String Repository::describe()
 {
-    String out = "{name:\"" + this->name + "\",items:[";
+    String out = "{\"name\":\"" + this->name + "\",\"items\":[";
 
     for (int i = 0; i < size; ++i)
     {
-        out.concat(items[i]->describe() + ",");
+        out.concat(items[i]->describe());
+        if (i < size - 1)
+        {
+            out.concat(",");
+        }
     }
     out.concat("]}");
     return out;

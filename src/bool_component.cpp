@@ -2,7 +2,7 @@
 
 const String BoolComponent::keyValue(String key, bool value)
 {
-    return key + ": " + (value ? "true" : "false") + ",";
+    return "\"" + key + "\"" + ": " + (value ? "true" : "false");
 };
 
 String BoolComponent::describeMore()

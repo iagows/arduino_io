@@ -81,6 +81,10 @@ With those info, the app can send a command to get the value of service named "A
 
 ## Version Log
 
+### 3.0.3
+
+Fixed json.
+
 ### 3.0.2
 
 Fixed return value.

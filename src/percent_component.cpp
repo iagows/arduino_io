@@ -2,7 +2,7 @@
 
 const String PercentComponent::keyValue(String key, int value)
 {
-    return key + ": " + value + ",";
+    return "\"" + key + "\"" + ": " + value;
 };
 
 String PercentComponent::describeMore()

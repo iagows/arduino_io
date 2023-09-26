@@ -66,12 +66,12 @@ String Component::describeName()
 
 String Component::keyValue(String key, String value)
 {
-    return key + ": \"" + value + "\",";
+    return "\"" + key + "\"" + ": \"" + value + "\",";
 };
 
 String Component::keyValue(String key, Component::IoType io)
 {
-    return key + ": \"" + (io == Component::IoType::IN ? "input" : "output") + "\",";
+    return "\"" + key + "\"" + ": \"" + (io == Component::IoType::IN ? "input" : "output") + "\",";
 };
 
 String Component::keyValue(String key, Component::DataType dt)
@@ -79,13 +79,13 @@ String Component::keyValue(String key, Component::DataType dt)
     switch (dt)
     {
     case Component::DataType::BOOLEAN:
-        return key + ": \"boolean\",";
+        return "\"" + key + "\"" + ": \"boolean\",";
         break;
     case Component::DataType::PERCENT:
-        return key + ": \"percent\",";
+        return "\"" + key + "\"" + ": \"percent\",";
         break;
     default:
-        return key + ": \"error\",";
+        return "\"" + key + "\"" + ": \"error\",";
         break;
     }
 };
