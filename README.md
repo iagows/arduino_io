@@ -81,6 +81,10 @@ With those info, the app can send a command to get the value of service named "A
 
 ## Version Log
 
+### 3.0.2
+
+Fixed return value.
+
 ### 3.0.1
 
 Changed the example to use the 3 main functions: read, describe, and write.

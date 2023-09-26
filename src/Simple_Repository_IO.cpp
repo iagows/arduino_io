@@ -120,5 +120,5 @@ Component *Repository::find(String name)
             return item;
         }
     }
-    return;
+    return nullptr;
 }
