@@ -33,7 +33,7 @@ String Repository::read(String name)
         BoolComponent *bc = static_cast<BoolComponent *>(item);
         if (bc != nullptr)
         {
-            return String(bc->read());
+            return String(bc->read() ? "true" : "false");
         }
     }
     else if (item->isPercent())
