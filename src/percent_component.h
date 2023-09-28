@@ -13,6 +13,7 @@ protected:
     int onRead();
     void onWrite();
     String describeMore();
+    int validateWrite(int value);
 
 private:
     const String keyValue(String key, int value);

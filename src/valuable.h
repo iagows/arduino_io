@@ -23,7 +23,7 @@ public:
     {
         if (this->isOutput())
         {
-            this->value = value;
+            this->value = this->validateWrite(value);
             this->onWrite();
         }
     };
@@ -33,6 +33,7 @@ protected:
     virtual T onRead() = 0;
     virtual void onWrite() = 0;
     virtual String describeMore() = 0;
+    virtual T validateWrite(T value) = 0;
 
 private:
     T value;

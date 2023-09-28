@@ -81,6 +81,10 @@ With those info, the app can send a command to get the value of service named "A
 
 ## Version Log
 
+### 3.0.5
+
+Fixed set/get values
+
 ### 3.0.4
 
 Fixed boolean output (0 or 1 could be confused with int)

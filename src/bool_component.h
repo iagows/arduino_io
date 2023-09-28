@@ -13,6 +13,7 @@ protected:
     bool onRead();
     void onWrite();
     String describeMore();
+    bool validateWrite(bool value);
 
 private:
     const String keyValue(String key, bool value);

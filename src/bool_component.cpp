@@ -10,9 +10,14 @@ String BoolComponent::describeMore()
     return keyValue(VALUE, this->read());
 }
 
+bool BoolComponent::validateWrite(bool inputValue)
+{
+    return inputValue;
+}
+
 void BoolComponent::onWrite()
 {
-    digitalWrite(this->getPin(), this->getValue() ? HIGH : LOW);
+    digitalWrite(this->getPin(), this->getValue() ? LOW : HIGH);
 }
 
 bool BoolComponent::onRead()
